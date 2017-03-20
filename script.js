@@ -11,6 +11,7 @@ var guessField = document.querySelector(".guessField");
 
 var guessCount = 1;
 var resetButton;
+guessField.focus();
 
 function checkGuess(){
     var userGuess = Number(guessField.value);   // check if entered value is a number; if not returns NaN;
