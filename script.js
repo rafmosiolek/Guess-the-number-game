@@ -44,3 +44,60 @@ function checkGuess(){
 }
 
 guessSubmit.addEventListener("click", checkGuess); // event listener: first argument is the type of event we are listening for - click, the second argument is the block of code is going to run after the event occur, in this case: function checkGuess();
+
+function setGameOver() {
+    guessField.disabled = true; // disable the form text input after the game is over
+    guessSubmit.disabled = true;    // disable the button after the game is over
+    
+    resetButton = document.createElement("button"); // create a new <button> element in existing HTML file
+    resetButton.textContent = "Start new game!";    // set new button's label;
+    document.body.appendChild(resetButton); // place it on the bottom of the HTML -> creates child to the body element;
+
+    resetButton.addEventListener("click", resetGame);   // event listener; when the new button is clicked, function resetGame() is run;
+}
+
+function resetGame() {
+    guessCount = 1; // puts the guessCount back down to 1
+
+    var resetParas = document.querySelectorAll(".resultParas p"); // creates a variable containing a list of all the paragraphs inside <div class="resultParas">
+    for (var i = 0; i < resetParas.length; i++) {   // loops through each one, removing the text content of each
+        resetParas[i].textContent = "";
+    }
+
+    resetButton.parentNode.removeChild(resetButton); // removes the reset button
+
+    guessField.disabled = false; // enables the form elements and empties and focuses the text field
+    guessSubmit.disabled = false;
+    guessField.value = "";
+    guessField.focus();
+
+    lastResult.style.backgroundColor = "white"; // removes the background color from the lastResult paragraph;
+
+    randomNumber = Math.floor(Math.random() * 100) + 1; // generates new random number;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
